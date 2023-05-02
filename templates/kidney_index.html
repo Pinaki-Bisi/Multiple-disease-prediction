@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>KIDNEY DISEASE PREDICTION</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+            *{
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+              font-family: 'Poppins',sans-serif;
+            }
+            body{
+              height: 100vh;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 10px;
+              background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url({{url_for('static', filename='th3.jpeg')}});
+            }
+            .container{
+              max-width: 700px;
+              width: 100%;
+              height: 700px;
+              background-color: solid transparent;
+              padding: 25px 30px;
+              border-radius: 5px;
+             
+              box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+            }
+            form{
+              border: solid white;
+            }
+            .container .title{
+              font-size: 25px;
+              font-weight: 500;
+              position: relative;
+              color: white;
+            }
+            .container .title::before{
+              content: "";
+              display: inline-block;
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              height: 3px;
+              width: 30px;
+              border-radius: 5px;
+              background: linear-gradient(135deg, white, rgb(177, 162, 220));
+            }
+            .container form .user-details{
+              display:flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+              margin: 20px 0 12px 0;
+              color: white;
+            }
+            form .user-details .input-box{
+              margin-bottom: 15px;
+              width: calc(100% / 2 - 20px);
+            }
+            form .input-box span.details{
+              display: block;
+              font-weight: 500;
+              margin-bottom: 5px;
+            }
+            .user-details .input-box input{
+              height: 30px;
+              width: 100%;
+              outline: none;
+              font-size: 16px;
+              border-radius: 5px;
+              padding-left: 15px;
+              border: 1px solid #ccc;
+              border-bottom-width: 2px;
+              transition: all 0.3s ease;
+            }
+            .user-details .input-box input:focus,
+            .user-details .input-box input:valid{
+              border-color: #9b59b6;
+            }
+            form .button{
+              height: 45px;
+              margin: 35px 0
+            }
+            form .button input{
+            height: 100%;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg,white, rgb(136, 157, 227));
+            }
+            form .button input:hover{
+              /* transform: scale(0.99); */
+              background: linear-gradient(-135deg, white, gray);
+              }
+                </style>
+    </head>
+            <body>
+                <div class="container">
+                    <div class="title">KIDNEY DISEASE PREDICTION</div>
+                   <form action="{{ url_for('predictkidney')}}"method="post">
+                    <div class="user-details">
+                        <div class="input-box">
+                            <span class="details">age</span>
+                            <input type="text" name="age" placeholder="age" required="required" />
+                        </div>
+                        <div class="input-box">
+                            <span class="details">bp</span>
+                            <input type="text" name="bp" placeholder="bp" required="required" />
+                       </div>
+                       <div class="input-box">
+                            <span class="details">sg</span>
+                            <input type="text" name="sg" placeholder="sg" required="required" />
+                       </div>
+                       <div class="input-box">
+                            <span class="details">al</span>
+                            <input type="text" name="al" placeholder="al" required="required" />
+                       </div>
+                       <div class="input-box">
+                            <span class="details">su</span>
+                            <input type="text" name="su" placeholder="su" required="required" />
+                       </div>
+                       <div class="input-box">
+                            <span class="details">rbc</span>
+                            <input type="text" name="rbc" placeholder="rbc" required="required" />
+                       </div>
+                       <div class="input-box">
+                            <span class="details">pc</span>
+                            <input type="text" name="pc" placeholder="pc" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">pcc</span>
+                        <input type="text" name="pcc" placeholder="pcc" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">ba</span>
+                        <input type="text" name="ba" placeholder="ba" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">bgr</span>
+                        <input type="text" name="bgr" placeholder="bgr" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">bu</span>
+                        <input type="text" name="bu" placeholder="bu" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">sc</span>
+                        <input type="text" name="sc" placeholder="sc" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">sod</span>
+                        <input type="text" name="sod" placeholder="sod" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">pot</span>
+                        <input type="text" name="pot" placeholder="pot" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">hemo</span>
+                        <input type="text" name="hemo" placeholder="hemo" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">pcv</span>
+                        <input type="text" name="pcv" placeholder="pcv" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">wc</span>
+                        <input type="text" name="wc" placeholder="wc" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">rc</span>
+                        <input type="text" name="rc" placeholder="rc" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">pcc</span>
+                        <input type="text" name="pcc" placeholder="pcc" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">htn</span>
+                        <input type="text" name="htn" placeholder="htn" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">dm</span>
+                        <input type="text" name="dm" placeholder="dm" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">cad</span>
+                        <input type="text" name="cad" placeholder="cad" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">appet</span>
+                        <input type="text" name="appet" placeholder="appet" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">pe</span>
+                        <input type="text" name="pe" placeholder="pe" required="required" />
+                       </div>
+                       <div class="input-box">
+                        <span class="details">ane</span>
+                        <input type="text" name="ane" placeholder="ane" required="required" />
+                       </div>
+                        <br>
+                        <br>
+                        {{ prediction_text }} 
+                    </div>
+                        <div class="button">
+                            <input type="submit" value="PREDICT">
+                        </div>
+                        
+                       
+                   </form>    
+    </body>
+</html>

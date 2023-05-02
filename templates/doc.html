@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>DOC nearby</title>
+    </head>
+    <body>
+        <p>GEO LOCATION</p>
+    </body>
+    <script>
+
+        if(!navigator.geolocation){
+          throw new Error("No geolocation available");
+        }
+      
+        function success(pos){
+          const lat=pos.coords.latitude;
+          const lng=pos.coords.longitude;
+      
+          const markup=`
+          <a href= "https://www.openstreetmap.org/#map=16/${lat}/${lng}" >
+            CLick here for location </a>
+            `;
+            
+            document.getElementById('output').innerHTML=markup;
+      
+        }
+        function error(){
+      if(err.code===1){
+        alert("please allow access to geolocation");
+      } else{
+        alert("position unavailable");
+      }
+          
+      }
+      const options={
+
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge:0,
+
+      };
+        navigator.geolocation.getCurrentPosition(success, error,options);
+      </script>
+</html>

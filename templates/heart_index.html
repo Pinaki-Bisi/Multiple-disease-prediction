@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HEART DISEASE PREDICTION</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url({{url_for('static',filename='th.jpg')}});
+}
+.container{
+  max-width: 700px;
+  width: 100%;
+  height: 700px;
+  background-color: solid transparent;
+  padding: 25px 30px;
+  border-radius: 5px;
+  border: solid white;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+.container .title{
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
+  color: white;
+}
+.container .title::before{
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, white, rgb(177, 162, 220));
+}
+.container form .user-details{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
+  color: white;
+}
+form .user-details .input-box{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
+}
+form .input-box span.details{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.user-details .input-box input{
+  height: 30px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.user-details .input-box input:focus,
+.user-details .input-box input:valid{
+  border-color: #9b59b6;
+}
+form .button{
+  height: 45px;
+  margin: 35px 0
+}
+form .button input{
+height: 100%;
+width: 100%;
+border-radius: 5px;
+border: none;
+color: #fff;
+font-size: 18px;
+font-weight: 500;
+letter-spacing: 1px;
+cursor: pointer;
+transition: all 0.3s ease;
+background: linear-gradient(135deg,white, rgb(136, 157, 227));
+}
+form .button input:hover{
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, white, gray);
+  }
+    </style>
+    </head>
+            <body>
+                <div class="container">
+                    <div class="title">HEART DISEASE PREDICTION</div>
+                   <form action="{{ url_for('predictheart')}}"method="post">
+                    <div class="user-details">
+                        <div class="input-box">
+                            <span class="details">Age</span>
+                            <input type="text" name="age" placeholder="Age" required="required" />
+                        </div>
+                        <div class="input-box">
+                            <span class="details">sex</span>
+                            <input type="text" name="sex" placeholder="Gender" required="required" />
+                        </div>
+                        <div class="input-box">
+                            <span class="details">cp</span>
+                            <input type="text" name="cp" placeholder="Chest pain type" required="required" />
+                       </div>
+                       <div class="input-box">
+                            <span class="details">threstbps</span>
+                            <input type="text" name="threstbps" placeholder="Resting blood pressure" required="required" />
+                       </div>
+                       <div class="input-box">
+                            <span class="details">chol</span>
+                            <input type="text" name="chol" placeholder="Cholestrole" required="required" />
+                       </div>
+                       <div class="input-box">
+                            <span class="details">fbs</span>
+                            <input type="text" name="fbs" placeholder="Fasting blood sugar" required="required" />
+                       </div>
+                       <div class="input-box">
+                            <span class="details">restecg</span>
+                            <input type="text" name="restecg" placeholder="Resting electrocardiographics result" required="required" />
+                       </div>
+                       <div class="input-box">
+                            <span class="details">thalach</span>
+                            <input type="text" name="thalach" placeholder="thal" required="required" />
+                       </div>
+                       <div class="input-box">
+                            <span class="details">exang</span>
+                            <input type="text" name="exang" placeholder="excercise induded agina" required="required" />
+                       </div>
+                       <div class="input-box">
+                            <span class="details">oldpeak</span>
+                            <input type="text" name="oldpeak" placeholder="ST depression" required="required" />
+                       </div>
+                       <div class="input-box">
+                            <span class="details">slope</span>
+                            <input type="text" name="slope" placeholder="slope" required="required" />
+                       </div>
+                       <div class="input-box">
+                            <span class="details">ca</span>
+                            <input type="text" name="ca" placeholder="no. of major vessels" required="required" />
+                       </div>
+                       <div class="input-box">
+                            <span class="details">thal</span>
+                            <input type="text" name="thal" placeholder="Thalach value" required="required" />
+                        </div>
+                        <br>
+                        <br>
+                        {{ prediction_text }} 
+                    </div>
+                        <div class="button">
+                            <input type="submit" value="PREDICT">
+                        </div>
+                        
+                       
+                   </form>    
+    </body>
+</html>
